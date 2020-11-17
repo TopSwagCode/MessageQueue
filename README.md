@@ -23,6 +23,8 @@ and
 
 ![queue](sqs.png)
 
+SQS + SNS gives something similar to publish subscriber.
+
 ![publish subscribe](sns.png)
 
 ### Kafka
