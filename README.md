@@ -7,7 +7,16 @@ and
 [Rebus](https://github.com/rebus-org/Rebus), [Masstransit](https://masstransit-project.com/), [Nservicebus](https://particular.net/nservicebus)
 
 
-## The queues
+## The "queues"
+
+### SQS
+
+![queue](sqs.png)
+
+SQS + SNS gives something similar to publish subscriber.
+
+![publish subscribe](sns.png)
+
 
 ### RabbitMQ
 
@@ -19,13 +28,6 @@ and
 
 ![rabbit routing](rmq3.png)
 
-### SQS
-
-![queue](sqs.png)
-
-SQS + SNS gives something similar to publish subscriber.
-
-![publish subscribe](sns.png)
 
 ### Kafka
 
@@ -35,6 +37,8 @@ For each topic, Kafka maintains a partitioned log of messages. Each partition is
 
 Kafka appends messages to these partitions as they arrive. By default, it uses a round-robin partitioner to spread messages uniformly across partitions. (But can use keys to keep messages ordered)
 
+![kafka](kafka.bmp)
+
 Producers can modify this behavior to create logical streams of messages. For example, in a multitenant application, we might want to create logical message streams according to every message’s tenant ID. In an IoT scenario, we might want to have each producer’s identity map to a specific partition constantly. Making sure all messages from the same logical stream map to the same partition guarantees their delivery in order to consumers.
 
 ![kafka producers](kafka1.png)
@@ -43,9 +47,10 @@ Consumers consume messages by maintaining an offset (or index) to these partitio
 
 ![kafka consumers](kafka2.png)
 
-@LinkedIn
 
-Problem:
+
+@LinkedIn Problem:
+
 ![LinkedIn before](li1.png)
 
 before vs after
@@ -70,6 +75,10 @@ There are ofcourse the native client libraries that can be used. In some cases i
 #### Setup
 
 ![rebus](rebus.png)
+
+#### Sagas
+
+#### Databus
 
 
 #### Consumer 
@@ -96,6 +105,14 @@ TODO
 
 ![masstransit producer](masstransitproducer.png)
 
+#### Sagas
+
+https://masstransit-project.com/usage/sagas/consumer-saga.html
+
+#### Databus
+
+https://masstransit-project.com/usage/message-data.html#usage
+
 ### RabbitMQ Native
 
 https://www.rabbitmq.com/tutorials/tutorial-one-dotnet.html
@@ -121,3 +138,5 @@ https://www.confluent.io/blog/kafka-fastest-messaging-system/
 https://eng.uber.com/reliable-reprocessing/
 
 https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying
+
+https://github.com/rebus-org/Rebus/wiki/Data-bus
